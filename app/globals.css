@@ -17,6 +17,7 @@ body,
 .splide {
   padding: 6px;
   padding-top: 0;
+  position: relative;
 }
 
 .splide__slide {
@@ -37,4 +38,38 @@ body,
     rgba(255, 255, 255, 0) 0%,
     #e3e6e6 100%
   );
+}
+
+.splide__arrow--prev {
+  position: absolute;
+
+  border-radius: 7px;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  height: 230px;
+  top: 0;
+  left: 5px;
+  z-index: 20;
+}
+.splide__arrow--prev:focus {
+  border: 4px black solid;
+}
+.splide__arrow--next:focus {
+  border: 4px black solid;
+}
+.splide__arrow--next {
+  height: 230px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 7px;
+
+  position: absolute;
+  top: 0;
+  right: 5px;
+  z-index: 20;
+}
+
+.splide__arrow--prev svg {
+  transform: scale(-1);
 }

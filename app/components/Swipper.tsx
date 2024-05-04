@@ -2,7 +2,7 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import img from '/images/products/laptop1.png';
 // Default theme
-import '@splidejs/react-splide/css';
+// import '@splidejs/react-splide/css';
 
 // or other themes
 // import '@splidejs/react-splide/css/skyblue';
