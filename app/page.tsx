@@ -7,7 +7,7 @@ export default function Home() {
   });
   return (
     <>
-      <main className="px-1 bg-[#E3E6E6]">
+      <main className="px-1 pt-0 bg-[#E3E6E6]">
         <Swipper />
         <ProductListing />
       </main>

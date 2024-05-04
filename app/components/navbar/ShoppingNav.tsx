@@ -1,11 +1,18 @@
+'use client';
+import { useCartContext } from '@/app/contexts/CartContext';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ShoppingNav() {
+  const cartContext = useCartContext();
   return (
-    <div className="p-1.4 relative mr-1.4 text-white hover:border-[1px] hover:rounded-sm border-[1px] border-nav hover:border-white flex">
+    <Link
+      href="/cart"
+      className="p-1.4 relative mr-1.4 text-white hover:border-[1px] hover:rounded-sm border-[1px] border-nav hover:border-white flex"
+    >
       <div>
         <span className="absolute top-[5px] left-[28px] text-orange-500 font-bold">
-          0
+          {cartContext?.quantity}
         </span>
         <Image
           className="self-center"
@@ -16,6 +23,6 @@ export default function ShoppingNav() {
         />
       </div>
       <p className="font-extrabold text-[15px] self-end -ml-2">Cart</p>
-    </div>
+    </Link>
   );
 }

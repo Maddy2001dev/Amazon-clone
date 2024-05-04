@@ -5,8 +5,8 @@ import img from '/images/products/laptop1.png';
 import '@splidejs/react-splide/css';
 
 // or other themes
-import '@splidejs/react-splide/css/skyblue';
-import '@splidejs/react-splide/css/sea-green';
+// import '@splidejs/react-splide/css/skyblue';
+// import '@splidejs/react-splide/css/sea-green';
 
 // or only core styles
 import '@splidejs/react-splide/css/core';
@@ -14,45 +14,56 @@ import Image from 'next/image';
 
 export default function Swipper() {
   return (
-    <Splide
-      aria-label="My Favorite Images"
-      options={{
-        rewind: true,
-        autoplay: true,
-      }}
-    >
-      <SplideSlide>
-        <Image
-          src="/images/products/laptop1.jpg"
-          alt="Image 1"
-          width={500}
-          height={500}
-        />
-      </SplideSlide>
-      <SplideSlide>
-        <Image
-          src="/images/products/laptop1.jpg"
-          alt="Image 2"
-          width={500}
-          height={500}
-        />
-      </SplideSlide>
-      <SplideSlide>
-        <Image
-          src="/images/products/laptop1.jpg"
-          alt="Image 2"
-          width={500}
-          height={500}
-        />
-      </SplideSlide>
-      <SplideSlide>
-        <Image
-          src="/images/products/laptop1.jpg"
-          alt="Image 2"
-          width={500}
-          height={500}
-        />
-      </SplideSlide>
-    </Splide>
+    <div>
+      <Splide
+        aria-label="My Favorite Images"
+        options={{
+          rewind: true,
+          autoplay: false,
+          pagination: false,
+        }}
+      >
+        <SplideSlide className="w-full ">
+          <div className="h-[600px]">
+            <Image
+              src="/images/products/slide1.jpg"
+              alt="Image 1"
+              layout="fill"
+              className="object-cover"
+            />
+          </div>
+        </SplideSlide>
+        <SplideSlide className="w-full">
+          <div className="">
+            <Image
+              src="/images/products/slide2.jpg"
+              alt="Image 2"
+              layout="fill"
+              className="object-cover"
+            />
+          </div>
+        </SplideSlide>
+        <SplideSlide className="w-full">
+          <div className="">
+            <Image
+              src="/images/products/slide3.jpg"
+              alt="Image 3"
+              layout="fill"
+              className="object-cover"
+            />
+          </div>
+        </SplideSlide>
+        <SplideSlide className="w-full">
+          <div className="">
+            <Image
+              src="/images/products/slide4.jpg"
+              alt="Image 4"
+              layout="fill"
+              className="object-cover"
+            />
+          </div>
+        </SplideSlide>
+      </Splide>
+    </div>
   );
 }

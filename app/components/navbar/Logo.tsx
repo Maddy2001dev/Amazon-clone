@@ -2,11 +2,10 @@
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-
 function Logo() {
   const router = useRouter();
   return (
-    <div onClick={() => router.push('/')} className="p-1">
+    <div onClick={() => router.push('/')} className="p-1 hover:cursor-pointer">
       <Image
         src="/images/brand/navbarImg.png"
         width={110}

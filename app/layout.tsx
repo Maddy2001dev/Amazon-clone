@@ -1,14 +1,15 @@
+import { Toaster } from 'react-hot-toast';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Nunito } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/app/components/navbar/Navbar';
 import Footer from '@/app/components/footer/Footer';
 import SideMenuModal from './components/sidemenu/SideMenuModal';
 import { MenuProvider } from './contexts/MenuContext';
 
-import Modal from './components/modals/Modal';
+import { CartContextProvider } from './contexts/CartContext';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Nunito({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'Amazon',
@@ -24,12 +25,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <MenuProvider>
-          <Navbar />
-          <SideMenuModal />
-        </MenuProvider>
-        {children}
-        <Footer />
+        <Toaster />
+        <CartContextProvider>
+          <MenuProvider>
+            <Navbar />
+            <SideMenuModal />
+          </MenuProvider>
+          {children}
+          <Footer />
+        </CartContextProvider>
       </body>
     </html>
   );
