@@ -41,6 +41,7 @@ const config: Config = {
       colors: {
         nav: '#131921',
         subNav: '#232f3e',
+        menuHead: '#232f3e',
       },
     },
   },

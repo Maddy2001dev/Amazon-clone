@@ -9,7 +9,7 @@ import SubNav from './SubNav';
 
 function Navbar() {
   return (
-    <nav>
+    <nav className="z-[50] relative">
       <div className="bg-nav p-1.6 flex items-center">
         <Logo />
         <LocationNav />

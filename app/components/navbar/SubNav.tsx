@@ -1,14 +1,20 @@
+'use client';
+import { useMenuContext } from '@/app/contexts/MenuContext';
 import Image from 'next/image';
 
 export default function SubNav() {
+  const menuContext = useMenuContext();
   return (
-    <div className="bg-subNav flex">
+    <div className="bg-subNav flex relative z-[50]">
       <ul className="flex ml-2 gap-1">
-        <li className="p-1.4 flex justify-center items-center hover:border-[1px] hover:rounded-sm border-[1px] border-subNav hover:border-white">
+        <li
+          onClick={menuContext?.onOpen}
+          className="p-1.4 py-1 flex justify-center gap-1 items-center hover:border-[1px] hover:rounded-sm border-[1px] border-subNav hover:border-white"
+        >
           <Image
             src="/images/icons/menu.png"
-            width={30}
-            height={30}
+            width={20}
+            height={20}
             alt="icon menu"
           />
           <button className="text-white text-sm font-bold">All</button>
