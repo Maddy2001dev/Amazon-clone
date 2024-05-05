@@ -19,7 +19,7 @@ export default function Swipper() {
         aria-label="My Favorite Images"
         options={{
           rewind: true,
-          autoplay: false,
+          autoplay: true,
           pagination: false,
         }}
       >

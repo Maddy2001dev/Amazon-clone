@@ -5,7 +5,9 @@ export default function Footer() {
   return (
     <footer className="flex flex-col text-slate-300">
       <Link href="#" className="bg-[#232F3E]/90 hover:bg-[#232F3E]/80">
-        <p className="text-center p-[14px] text-white">Back to top</p>
+        <p className="text-center text-[12px] p-[14px] text-white">
+          Back to top
+        </p>
       </Link>
       <div className="p-10 px-[180px] flex justify-around flex-row  bg-[#232F3E]">
         <div>

@@ -73,3 +73,11 @@ body,
 .splide__arrow--prev svg {
   transform: scale(-1);
 }
+
+.p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  width: 280px; /* Adjust the width according to your layout */
+}
