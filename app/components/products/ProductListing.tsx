@@ -7,6 +7,9 @@ const products = [
     name: 'laptop Asus',
     price: 1200,
     img: '/images/products/laptop1.jpg',
+    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
     quantity: 1,
   },
   {
@@ -14,6 +17,9 @@ const products = [
     name: 'laptop Asus',
     price: 1200,
     img: '/images/products/laptop1.jpg',
+    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
     quantity: 1,
   },
   {
@@ -21,6 +27,9 @@ const products = [
     name: 'laptop Asus',
     price: 1200,
     img: '/images/products/laptop1.jpg',
+    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
     quantity: 1,
   },
   {
@@ -28,6 +37,9 @@ const products = [
     name: 'laptop Asus',
     price: 1200,
     img: '/images/products/laptop1.jpg',
+    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
     quantity: 1,
   },
   {
@@ -35,6 +47,9 @@ const products = [
     name: 'laptop Asus',
     price: 1200,
     img: '/images/products/laptop1.jpg',
+    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
     quantity: 1,
   },
   {
@@ -42,6 +57,9 @@ const products = [
     name: 'laptop Asus',
     price: 1200,
     img: '/images/products/laptop1.jpg',
+    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
     quantity: 1,
   },
   {
@@ -49,9 +67,13 @@ const products = [
     name: 'laptop Asus',
     price: 1200,
     img: '/images/products/laptop1.jpg',
+    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
     quantity: 1,
   },
 ];
+
 export default function ProductListing() {
   return (
     <main className="p-4 -mt-[400px] relative">
@@ -64,7 +86,7 @@ export default function ProductListing() {
           amazon.de
         </Link>
       </header>
-      <div className="grid gap-3 grid-cols-4">
+      <div className="grid gap-1 grid-cols-4">
         {products.map((product) => (
           <ProductItem key={product.id} data={product} />
         ))}

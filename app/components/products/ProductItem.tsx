@@ -1,10 +1,8 @@
 'use client';
-import { useCartContext } from '@/app/contexts/CartContext';
+
 import Image from 'next/image';
 
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
-import toast from 'react-hot-toast';
 
 export type productShape = {
   id: number;
@@ -12,6 +10,7 @@ export type productShape = {
   price: number;
   img: string;
   quantity: number;
+  description: string;
 };
 
 type ProductItemProps = {
@@ -20,75 +19,20 @@ type ProductItemProps = {
 
 export default function ProductItem({ data }: ProductItemProps) {
   const router = useRouter();
-  const context = useCartContext();
 
-  const alreadyIn = context?.products.find((product) =>
-    data.id === product.id ? true : false
-  );
-
-  function handleAdd(data: productShape) {
-    if (!alreadyIn) {
-      context?.onAdd(data);
-      toast.success('Added to the cart');
-    }
-  }
-
-  function handleRemove(id: number) {
-    if (alreadyIn) {
-      context?.onRemove(id);
-      toast.success('Removed from the cart');
-    }
-  }
   return (
-    // <div
-    //   onClick={(e) => {
-    //     router.push(`/products/${data.id}`);
-    //   }}
-    //   className="hover:-translate-y-[2px] hover:scale-102 hover:shadow-2xl duration-300 transition bg-[#f5f6f6] flex flex-col justify-center py-1 pb-0 shadow-lg cursor-pointer"
-    // >
-    //   <div className="flex items-center px-1 pb-1">
-    //     <p>{data.name}</p>
-    //   </div>
-    //   <div>
-    //     <Image
-    //       src="/images/products/laptop1.jpg"
-    //       width={400}
-    //       height={300}
-    //       alt="product"
-    //     />
-    //   </div>
-    //   <div className="flex justify-between items-center">
-    //     <div className="font-extrabold text-lg p-1 mt-1 ml-1">
-    //       {data.price}$
-    //     </div>
-    //     <button
-    //       onClick={(e) => {
-    //         e.stopPropagation();
-
-    //         handleAdd(data);
-    //         handleRemove(data.id);
-    //       }}
-    //       className={`bg-yellow-400 rounded-3xl py-1 px-2 hover:bg-yellow-500 mr-1 text-center transition ${
-    //         alreadyIn ? 'bg-slate-900' : 'bg-orange-300'
-    //       } hover:bg-orange-600`}
-    //     >
-    //       {alreadyIn ? 'Remove from cart' : 'Add to cart'}
-    //     </button>
-    //   </div>
-    // </div>
-
     <div
       onClick={(e) => {
         router.push(`/products/${data.id}`);
       }}
-      className="flex flex-col cursor-pointer bg-white overflow-hidden justify-center items-center gap-0 p-3"
+      className="flex flex-col cursor-pointer bg-white overflow-hidden justify-center items-start gap-0 p-3"
     >
       <Image
         src="/images/products/laptopp.jpg"
         width={150}
         height={150}
         alt="product"
-        className="object-cover"
+        className="object-cover self-center"
       />
       <hr className="border-slate-300 mb-2 w-full border-[0.1px] px-0 mx-0" />
 

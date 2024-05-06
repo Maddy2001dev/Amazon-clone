@@ -7,6 +7,7 @@ interface CartContextTypes {
   products: productShape[];
   onAdd: (data: productShape) => void;
   onRemove: (id: number) => void;
+  onUpdate: (quantity: number, id: number) => void;
   quantity: number;
 }
 
@@ -25,11 +26,20 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
   );
 
   const onAdd = (data: productShape) => {
-    setTimeout(() => {}, 200);
     if (!products.some((product) => product.id === data.id)) {
       setProducts((products) => [...products, data]);
     }
   };
+
+  const onUpdate = (quantity: number, id: number) => {
+    const product = products.find((product) => product.id === id);
+    if (product) {
+      product.quantity = quantity;
+      const filteredProducts = products.filter((product) => product.id !== id);
+      setProducts((products) => [...filteredProducts, product]);
+    }
+  };
+
   const onRemove = (id: number) => {
     const updatedProducts = products.filter((product) => product.id !== id);
     setProducts(updatedProducts);
@@ -39,6 +49,7 @@ export function CartContextProvider({ children }: CartContextProviderProps) {
     products,
     onAdd,
     onRemove,
+    onUpdate,
     quantity,
   };
 

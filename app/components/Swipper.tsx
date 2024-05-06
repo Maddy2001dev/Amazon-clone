@@ -26,6 +26,7 @@ export default function Swipper() {
         <SplideSlide className="w-full ">
           <div className="h-[600px]">
             <Image
+              priority
               src="/images/products/slide1.jpg"
               alt="Image 1"
               layout="fill"
@@ -36,6 +37,7 @@ export default function Swipper() {
         <SplideSlide className="w-full">
           <div className="">
             <Image
+              priority
               src="/images/products/slide2.jpg"
               alt="Image 2"
               layout="fill"
@@ -46,6 +48,7 @@ export default function Swipper() {
         <SplideSlide className="w-full">
           <div className="">
             <Image
+              priority
               src="/images/products/slide3.jpg"
               alt="Image 3"
               layout="fill"
@@ -56,6 +59,7 @@ export default function Swipper() {
         <SplideSlide className="w-full">
           <div className="">
             <Image
+              priority
               src="/images/products/slide4.jpg"
               alt="Image 4"
               layout="fill"

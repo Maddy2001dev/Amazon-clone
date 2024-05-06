@@ -7,6 +7,7 @@ function Logo() {
   return (
     <div onClick={() => router.push('/')} className="p-1 hover:cursor-pointer">
       <Image
+        priority
         src="/images/brand/navbarImg.png"
         width={110}
         height={50}
