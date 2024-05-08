@@ -26,7 +26,6 @@ export default async function ProductPage({
   params: Record<string, string>;
 }) {
   const { data } = await getProducts({ id: +params.slug });
-  // console.log(params.slug);
 
   return <Client data={data} />;
 }

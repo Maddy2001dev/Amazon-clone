@@ -11,17 +11,17 @@ export default async function Home({
     ssr: false,
   });
 
-  // const query = {
-  //   query: searchParams.query,
-  //   category: `${searchParams.category ? searchParams.category : null}`,
-  // };
+  const searchParameters = {
+    query: searchParams.query,
+    category: searchParams.category,
+  };
 
-  const { data: products, success } = await getProducts();
+  const { data: products, success } = await getProducts(searchParameters);
 
   if (!success) {
     return 'error';
   }
-  console.log(products);
+
   return (
     <>
       <main className="px-1 pt-0 bg-[#E3E6E6]">

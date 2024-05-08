@@ -14,6 +14,7 @@ export default function SearchBar() {
     formEvent.preventDefault();
     const query = inputRef.current!.value;
     const category = selectRef.current!.value;
+    if (!query && !category) router.push('/');
 
     router.push(
       `/?${query ? 'query=' + query : ''}&${
@@ -34,13 +35,12 @@ export default function SearchBar() {
         >
           <option value="all">All</option>
           <option value="laptops">Laptop</option>
-          <option value="mobile">mobile</option>
+          <option value="mobiles">mobile</option>
           <option value="mobile accessories">mobile accessories</option>
         </select>
 
         <input
           ref={inputRef}
-          required
           name="query"
           type="text"
           className="p-1 flex-grow bg-slate-100 outline-none text-2xl"
