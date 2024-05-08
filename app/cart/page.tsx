@@ -4,28 +4,28 @@ import { useCartContext } from '@/app/contexts/CartContext';
 import Link from 'next/link';
 import CartListing from './CartListing';
 
-const data = [
-  {
-    id: 1,
-    name: 'laptop Asus',
-    price: 1200,
-    img: '/images/products/laptoppBig.jpg',
-    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
-    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
-    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
-    quantity: 1,
-  },
-  {
-    id: 1,
-    name: 'laptop Asus',
-    price: 1200,
-    img: '/images/products/laptoppBig.jpg',
-    description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
-    Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
-    Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
-    quantity: 1,
-  },
-];
+// const data = [
+//   {
+//     id: 1,
+//     name: 'laptop Asus',
+//     price: 1200,
+//     img: '/images/products/laptoppBig.jpg',
+//     description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+//     Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+//     Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
+//     quantity: 1,
+//   },
+//   {
+//     id: 1,
+//     name: 'laptop Asus',
+//     price: 1200,
+//     img: '/images/products/laptoppBig.jpg',
+//     description: `Acer Aspire 3 A315-24P-R7VH Slim Laptop | 15.6&quot; Full HD IPS
+//     Display | AMD Ryzen 3 7320U Quad-Core Processor | AMD Radeon
+//     Graphics | 8GB LPDDR5 | 128GB NVMe SSD |`,
+//     quantity: 1,
+//   },
+// ];
 
 export default function Cart() {
   const context = useCartContext();
@@ -50,17 +50,21 @@ export default function Cart() {
           <div className="bg-white rounded p-[40px] shadow-sm shadow-slate-400">
             <header className="p-1 flex flex-col items-start gap-2">
               <p className="font-bold text-4xl">Shopping Basket</p>
-              <button className="text-[#007185] hover:text-red-600">
+              <button
+                onClick={() => context?.deSelect()}
+                className="text-[#007185] hover:text-red-600"
+              >
                 Deselect all items
               </button>
             </header>
             <hr className="border-slate-300 mt-1 h-[3px]" />
-            <CartListing data={data} />
+            <CartListing data={context?.products} />
           </div>
           <div className="bg-white rounded self-start p-[20px] shadow-sm shadow-slate-400">
             <p className="text-lg">
               Subtotal (<span className="font-semibold text-yellow-900">1</span>{' '}
-              item): <span className="font-bold text-xl">$37.99</span>
+              item):{' '}
+              <span className="font-bold text-xl">${context?.total}</span>
             </p>
             <div className="flex py-1 text-[14px] gap-1">
               <input type="checkbox" />
@@ -72,7 +76,7 @@ export default function Cart() {
               </p>
             </div>
 
-            <button className="bg-yellow-400 hover:bg-yellow-500 rounded-[5px] px-3 w-full mt-1 py-1.6">
+            <button className="bg-yellow-400 hover:bg-yellow-500 border-yellow-400 shadow shadow-slate-400 border-[1px] rounded-[5px] px-3 w-full mt-1 py-1.6">
               Proceed to Checkout
             </button>
           </div>

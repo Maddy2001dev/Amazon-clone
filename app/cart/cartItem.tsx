@@ -3,13 +3,19 @@ import Image from 'next/image';
 import { productShape } from '../components/products/ProductItem';
 import Link from 'next/link';
 import { useState } from 'react';
+import { useCartContext } from '../contexts/CartContext';
 
 interface CartItemProps {
   product: productShape;
 }
 
 export default function CartItem({ product }: CartItemProps) {
-  const [quantity, setQuantity] = useState<number>(1);
+  const context = useCartContext();
+
+  const [quantity, setQuantity] = useState<number>(
+    context?.getQuantityById(product.id)!
+  );
+  const [isChanging, setIsChanging] = useState(false);
   const selections = Array.from({ length: 27 }, (el, i) => (
     <option key={i} value={i + 1}>
       Quantity: {i + 1}
@@ -63,6 +69,8 @@ export default function CartItem({ product }: CartItemProps) {
                 id="quantity"
                 value={quantity}
                 onChange={(e) => {
+                  setIsChanging(true);
+                  setQuantity(() => +e.target.value);
                   // if (!alreadyIn) {
                   //   setQuantity(+e.target.value);
                   // } else {
@@ -74,8 +82,18 @@ export default function CartItem({ product }: CartItemProps) {
                 {selections}
               </select>
               <span className="mx-2 text-slate-300">|</span>
-              <button className="text-[#007185] hover:text-red-600">
-                Delete
+              <button
+                onClick={() => {
+                  if (isChanging) {
+                    context?.onUpdate(quantity, product.id);
+                    setIsChanging(false);
+                  } else {
+                    context?.onRemove(product.id);
+                  }
+                }}
+                className="text-[#007185] hover:text-red-600"
+              >
+                {isChanging ? 'Update' : 'Delete'}
               </button>
               <span className="mx-2 text-slate-300">|</span>
               <button className="text-[#007185] hover:text-red-600">

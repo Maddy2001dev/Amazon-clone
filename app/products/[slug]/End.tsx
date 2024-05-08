@@ -11,6 +11,7 @@ interface EndProps {
   handleRemove: () => void;
   handleAdd: () => void;
   handleUpdate: () => void;
+  data: productShape;
 }
 
 export default function End({
@@ -21,6 +22,7 @@ export default function End({
   handleAdd,
   handleRemove,
   handleUpdate,
+  data,
 }: EndProps) {
   const selections = Array.from({ length: 27 }, (el, i) => (
     <option key={i} value={i + 1}>
@@ -43,7 +45,9 @@ export default function End({
       </div>
       <div className="flex gap-[1px] mb-5">
         <p className="self-start pt-[6px]">$</p>
-        <p className="self-stretch font-bold text-[30px] tracking-tight">299</p>
+        <p className="self-stretch font-bold text-[30px] tracking-tight">
+          {data.price}
+        </p>
         <p className="font-semibold self-start pt-[6px]">99</p>
       </div>
       <p className="pp text-[#565959] text-[14px]">
@@ -91,12 +95,16 @@ export default function End({
             handleAdd();
           }
         }}
-        className="bg-yellow-400 hover:bg-yellow-500 rounded-full px-3 mt-3 py-1.6"
+        className="bg-yellow-400 hover:bg-yellow-500 border-yellow-400 shadow shadow-slate-400 border-[1px] rounded-full px-3 mt-3 py-1.6"
       >
         {alreadyIn ? 'Remove from cart' : 'Add to cart'}
       </button>
-      <div className="flex sudu flex-col relative gap-1.6 text-[12px] p-1.6">
-        <div className="mt-2">
+      <div
+        className={`flex ${
+          endExpanded ? '' : 'max-h-[160px] overflow-hidden'
+        } flex-col gap-1.6 text-[12px] p-1.6`}
+      >
+        <div className="mt-2 ">
           <div className="flex justify-between gap-1 items-center">
             <p className="self-start ">Ships from</p>
             <p className="pp-end ">Amazon.com</p>
@@ -124,29 +132,14 @@ export default function End({
               Product support included
             </p>
           </div>
-          {/* <div
-            className={`absolute bg-white h-[80px] p-1  ${
-              endExpanded ? 'top-[200px]' : 'top-[163px]'
-            } left-0 w-full`}
-          >
-            <div>
-              <button
-                onClick={() => setEndExpaned((is) => !is)}
-                className="text-[12px] cursor-pointer hover:text-red-600 text-[#007185]"
-              >
-                {endExpanded ? 'Show less' : 'See more'}
-              </button>
-              <div className="flex justify-between gap-1 items-center">
-                <input type="checkbox" className="self-start mt-1.6" />
-                <p className="text-[14px]">
-                  Add a gift receipt for easy returns
-                </p>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
-      h
+      <button
+        onClick={() => setEndExpaned((is) => !is)}
+        className="pl-1.6 text-[12px] hover:text-red-600 text-left text-[#007185]"
+      >
+        {endExpanded ? 'Show less' : 'See more'}
+      </button>
     </div>
   );
 }
