@@ -42,12 +42,16 @@ export default function ProductItem({ data }: ProductItemProps) {
         <div className="self-start">
           <div className="flex gap-[1px]">
             <p className="self-start mt-[7px]">$</p>
-            <p className="self-stretch font-bold text-[25px]">{data.price}</p>
+            <p className="self-stretch font-bold text-[25px]">
+              {data.price - data.price * 0.1}
+            </p>
             <p className="font-semibold self-start mt-[7px]">99</p>
           </div>
         </div>
 
-        <p className="line-through self-start -mt-[7px] text-[13px]">$321.99</p>
+        <p className="line-through self-start -mt-[7px] text-[13px]">
+          ${data.price}
+        </p>
 
         <p className="p text-sm mt-2">{data.name}</p>
         <div className="flex p-[2px] gap-1 self-start items-center">
