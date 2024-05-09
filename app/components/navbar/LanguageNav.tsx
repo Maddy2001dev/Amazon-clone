@@ -31,8 +31,8 @@ export default function LanguageNav() {
   const Modal = element
     ? createPortal(
         <>
-          <div className="bg-black/60 fixed inset-0 z-[49]"></div>
-          <div className="absolute top-[110px] left-[1000px] z-[1000]">
+          <div className="bg-black/60 fixed inset-0"></div>
+          <div className="absolute top-[110px] left-[1000px]">
             <div className="bg-white flex items-center gap-1 p-2">
               <p className="text-[13] text-[#444]">Change language</p>
               <Link

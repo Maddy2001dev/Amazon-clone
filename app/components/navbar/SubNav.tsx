@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function SubNav() {
   const menuContext = useMenuContext();
   return (
-    <div className="bg-subNav flex relative z-[50]">
+    <div className="bg-subNav flex relative">
       <ul className="flex ml-2 gap-1">
         <li
           onClick={menuContext?.onOpen}

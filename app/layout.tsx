@@ -8,6 +8,8 @@ import SideMenuModal from './components/sidemenu/SideMenuModal';
 import { MenuProvider } from './contexts/MenuContext';
 
 import { CartContextProvider } from './contexts/CartContext';
+import Overlay from './components/overlay/Overlay';
+import OverlayProvider from './contexts/OverlayContext';
 
 const inter = Nunito({ subsets: ['latin'] });
 
@@ -27,12 +29,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <Toaster />
         <CartContextProvider>
-          <MenuProvider>
-            <Navbar />
-            <SideMenuModal />
-          </MenuProvider>
-          <div>{children}</div>
-          <Footer />
+          <OverlayProvider>
+            <Overlay />
+            <MenuProvider>
+              <Navbar />
+              <SideMenuModal />
+            </MenuProvider>
+            <div>{children}</div>
+            <Footer />
+          </OverlayProvider>
         </CartContextProvider>
       </body>
     </html>

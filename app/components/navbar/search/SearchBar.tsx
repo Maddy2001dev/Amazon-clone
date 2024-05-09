@@ -3,38 +3,46 @@ import Image from 'next/image';
 
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useOverlayContext } from '@/app/contexts/OverlayContext';
 
 export default function SearchBar() {
   const inputRef = useRef<HTMLInputElement>(null);
   const selectRef = useRef<HTMLDivElement>(null);
-  // const selectRef = useRef<HTMLSelectElement>(null);
-  // const selectRef = useRef<HTMLDivElement>('all');
-  const [isOpen, setIsOpen] = useState(false);
+  const [selectIsOpen, setSelectIsOpen] = useState(false);
   const [category, setCategory] = useState('All');
   const [inputSelected, setInputSelected] = useState(false);
-
+  const overlay = useOverlayContext();
+  const divContainer = useRef<HTMLDivElement>(null);
   useEffect(() => {
     function func(e: Event) {
       const target = e.target as HTMLElement;
       const container = inputRef.current;
-
       if (container && !container.contains(target)) {
         setInputSelected(false);
       }
     }
-
     document.addEventListener('click', func);
-
     return () => document.removeEventListener('click', func);
   }, []);
 
   useEffect(() => {
     function func(e: Event) {
+      const container = divContainer.current;
+      const target = e.target as HTMLElement;
+      if (!container?.contains(target)) {
+        overlay?.onClose();
+      }
+    }
+    document.addEventListener('click', func);
+    return () => document.removeEventListener('click', func);
+  }, [overlay?.onClose, overlay]);
+
+  useEffect(() => {
+    function func(e: Event) {
       const target = e.target as HTMLElement;
       const container = selectRef.current;
-
       if (container && !container.contains(target)) {
-        setIsOpen(false);
+        setSelectIsOpen(false);
       }
     }
 
@@ -48,6 +56,8 @@ export default function SearchBar() {
     formEvent.preventDefault();
     const query = inputRef.current!.value;
 
+    setInputSelected(false);
+    overlay?.onClose();
     if (!query && !category) router.push('/');
 
     router.push(
@@ -56,36 +66,17 @@ export default function SearchBar() {
       }`
     );
   }
-  const overlay = (
-    <div
-      onClick={(e) => {}}
-      className="
-  justify-center items-start
-  flex
-  flex-row
-  overflow-x-hidden
-  overflow-y-auto
-  fixed
-  inset-0
-  z-50
-  outline-none
-  focus:outline-none
-  bg-neutral-800/70
-  "
-    >
-      {/* <div className="relative w-full my-6 mx-auto h-full">
-        <div
-          className={`translate duration-300 h-full ${
-            showModal ? 'translate-y-0' : 'translate-y-full'
-          } ${showModal ? 'opacity-100' : 'opacity-0'}`}
-        ></div>
-      </div> */}
-    </div>
-  );
+
+  useEffect(() => {
+    if (category != 'All') {
+      inputRef.current?.focus();
+      overlay?.onOpen();
+    }
+  }, [category]);
 
   return (
     <>
-      <div className="flex-grow">
+      <div ref={divContainer} className="flex-grow relative">
         <form
           className={`flex rounded items-center gap-0 ${
             inputSelected ? 'outline outline-orange-400 outline-[3px]' : ''
@@ -94,11 +85,13 @@ export default function SearchBar() {
         >
           <div
             onClick={() => {
-              setIsOpen((is) => !is);
-              setInputSelected(false);
+              setSelectIsOpen((is) => !is);
+              if (inputSelected) {
+                setInputSelected(false);
+              }
             }}
             className={`relative border-slate-400 border-[1px] self-stretch flex items-center cursor-pointer rounded-l bg-[#e6e6e6] hover:bg-slate-300  ${
-              isOpen ? 'outline outline-orange-400 outline-[3px]' : ''
+              selectIsOpen ? 'outline outline-orange-400 outline-[3px]' : ''
             }`}
             ref={selectRef}
           >
@@ -120,7 +113,7 @@ export default function SearchBar() {
                 }
               }}
               className={`absolute overflow-y-scroll border-slate-400 w-[150px] border-[1px] flex flex-col gap-1.6 top-[45px] bg-white ${
-                isOpen ? 'visible z-[51]' : 'hidden'
+                selectIsOpen ? 'visible z-[51]' : 'hidden'
               }`}
             >
               <li
@@ -152,8 +145,9 @@ export default function SearchBar() {
 
           <input
             onClick={() => {
+              overlay?.onOpen();
               setInputSelected(true);
-              setIsOpen(false);
+              // setSelectIsOpen(false);
             }}
             autoComplete="off"
             ref={inputRef}
