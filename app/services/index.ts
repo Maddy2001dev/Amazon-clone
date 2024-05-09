@@ -9,15 +9,16 @@ interface getProductsI {
   category?: string | null;
 }
 export async function getProducts(props: getProductsI) {
-  // const query = props.searchParameters?.query;
-  // const category = props.searchParameters?.category;
   const query = props.query;
   const category = props.category;
 
   const string = () => {
-    if (props?.id !== undefined) return props.id;
+    if (props?.id !== undefined) return `/${props.id}`;
     if (query && category) {
       return `?query=${query}&category=${category}`;
+    }
+    if (category) {
+      return `?q=${category}`;
     }
     if (query) {
       return `?q=${query}`;

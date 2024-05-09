@@ -31,7 +31,7 @@ export default function RootLayout({
             <Navbar />
             <SideMenuModal />
           </MenuProvider>
-          {children}
+          <div className="">{children}</div>
           <Footer />
         </CartContextProvider>
       </body>

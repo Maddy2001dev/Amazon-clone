@@ -11,7 +11,7 @@ export default function ShoppingNav() {
       className="p-1.4 relative mr-1.4 text-white hover:border-[1px] hover:rounded-sm border-[1px] border-nav hover:border-white flex"
     >
       <div>
-        <span className="absolute top-[5px] left-[28px] text-orange-500 font-bold">
+        <span className="absolute w-[19px] flex items-center justify-center top-[5px] right-auto left-[24px] text-orange-500 font-bold">
           {cartContext?.quantity}
         </span>
         <Image
