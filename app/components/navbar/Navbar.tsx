@@ -6,7 +6,6 @@ import SignIn from './SignIn';
 import OrdersNav from './OrdersNav';
 import ShoppingNav from './ShoppingNav';
 import SubNav from './SubNav';
-import { useEffect } from 'react';
 
 function Navbar() {
   return (

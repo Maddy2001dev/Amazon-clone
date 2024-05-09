@@ -1,52 +1,165 @@
 'use client';
+import { useOverlayContext } from '@/app/contexts/OverlayContext';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-
-//  <div className="relative z-[100]">
-// <div className="bg-white flex items-center gap-1 p-2 absolute top-[110px] left-[1130px] z-[100]">
-//   <p className="text-[13] text-[#444]">Change language</p>
-//   <Link
-//     href="#"
-//     className="text-[#007185] text-[11px] hover:text-red-600 hover:underline"
-//   >
-//     Learn more
-//   </Link>
-// </div>
-// </div>
-
-// <div className="bg-black/60 fixed inset-0 z-[49]">
-
-//  </div>,
+import { ChangeEvent, useEffect, useState } from 'react';
 
 export default function LanguageNav() {
   const [showModal, setShowModal] = useState(false);
-  const [element, setElement] = useState<HTMLElement>();
+
+  const overlay = useOverlayContext();
+  const [lang, setLang] = useState('en');
 
   useEffect(() => {
-    setElement(document.body);
-  }, []);
+    if (showModal) {
+      overlay?.onOpen();
+    }
+    if (!showModal) {
+      overlay?.onClose();
+    }
+  }, [showModal]);
 
-  const Modal = element
-    ? createPortal(
-        <>
-          <div className="bg-black/60 fixed inset-0"></div>
-          <div className="absolute top-[110px] left-[1000px]">
-            <div className="bg-white flex items-center gap-1 p-2">
-              <p className="text-[13] text-[#444]">Change language</p>
+  function handleChange(e: ChangeEvent) {
+    const el = e.target as HTMLInputElement;
+    setLang(el.value);
+  }
+
+  const Modal = (
+    <>
+      <div className="absolute top-[60px] left-[1020px] z-[51]">
+        <div className="relative">
+          <div className="triangle absolute top-[-10px] left-[45%]"></div>
+          <div className="bg-white rounded flex flex-col justify-center gap-1 p-2">
+            <div className="flex gap-[8px] items-center mb-4">
+              <p className="text-[13px] text-[#444]">Change language</p>
               <Link
                 href="#"
-                className="text-[#007185] text-[11px] hover:text-red-600 hover:underline"
+                className="text-[#007185] text-[13px] hover:text-red-600 hover:underline"
               >
                 Learn more
               </Link>
             </div>
+            <ul className="text-[14px] flex flex-col gap-1">
+              <li className="flex gap-1">
+                <input
+                  type="radio"
+                  checked={lang === 'en'}
+                  onChange={(e) => handleChange(e)}
+                  value="en"
+                />
+                <p>English - EN</p>
+              </li>
+              <li className="flex gap-1">
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="radio"
+                  checked={lang === 'es'}
+                  value="es"
+                  className=""
+                />
+                <p>español - ES</p>
+              </li>
+              <li className="flex gap-1">
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="radio"
+                  checked={lang === 'ar'}
+                  value="ar"
+                  className=""
+                />
+                <p>العربية - AR</p>
+              </li>
+              <li className="flex gap-1">
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="radio"
+                  checked={lang === 'de'}
+                  value="de"
+                  className=""
+                />
+                <p>Deutsch - DE</p>
+              </li>
+              <li className="flex gap-1">
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="radio"
+                  checked={lang === 'he'}
+                  value="he"
+                  className=""
+                />
+                <p>עברית - HE</p>
+              </li>
+              <li className="flex gap-1">
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="radio"
+                  checked={lang === 'ko'}
+                  value="ko"
+                  className=""
+                />
+                <p>한국어 - KO</p>
+              </li>
+              <li className="flex gap-1">
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="radio"
+                  checked={lang === 'pt'}
+                  value="pt"
+                  className=""
+                />
+                <p>português - PT</p>
+              </li>
+              <li className="flex gap-1">
+                <input
+                  onChange={(e) => handleChange(e)}
+                  type="radio"
+                  checked={lang === 'zh'}
+                  value="zh"
+                  className=""
+                />
+                <p>中文 (简体) - ZH</p>
+              </li>
+            </ul>
+            <hr className="border-slate-400 h-[1px]" />
+            <div className="flex gap-[8px] items-center">
+              <p className="text-[13px] text-[#444]">Change currency</p>
+              <Link
+                href="#"
+                className="text-[#007185] text-[13px] hover:text-red-600 hover:underline"
+              >
+                Learn more
+              </Link>
+            </div>
+            <div className="flex justify-between items-cente text-[13px]">
+              <p>$ - USD - US Dollar</p>
+              <Link
+                href="#"
+                className="text-[#007185] text-[13px] hover:text-red-600 hover:underline"
+              >
+                Change
+              </Link>
+            </div>
+            <hr className="border-slate-400 h-[1px]" />
+            <div className="flex items-center gap-[2px]">
+              <Image
+                src="/images/icons/united-states.png"
+                width={25}
+                height={25}
+                alt="flag"
+              />
+              <p className="  ">you are shopping on Amazon.com</p>
+            </div>
+            <Link
+              href="#"
+              className="text-center mt-1 text-[#007185] hover:underline"
+            >
+              Change country/region.
+            </Link>
           </div>
-        </>,
-        element
-      )
-    : null;
+        </div>
+      </div>
+    </>
+  );
 
   return (
     <>
@@ -70,8 +183,8 @@ export default function LanguageNav() {
           height={12}
           alt="down icon"
         />
+        {showModal && Modal}
       </div>
-      {showModal && Modal}
     </>
   );
 }

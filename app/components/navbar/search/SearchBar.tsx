@@ -25,17 +25,17 @@ export default function SearchBar() {
     return () => document.removeEventListener('click', func);
   }, []);
 
-  useEffect(() => {
-    function func(e: Event) {
-      const container = divContainer.current;
-      const target = e.target as HTMLElement;
-      if (!container?.contains(target)) {
-        overlay?.onClose();
-      }
-    }
-    document.addEventListener('click', func);
-    return () => document.removeEventListener('click', func);
-  }, [overlay?.onClose, overlay]);
+  // useEffect(() => {
+  //   function func(e: Event) {
+  //     const container = divContainer.current;
+  //     const target = e.target as HTMLElement;
+  //     if (!container?.contains(target)) {
+  //       overlay?.onClose();
+  //     }
+  //   }
+  //   document.addEventListener('click', func);
+  //   return () => document.removeEventListener('click', func);
+  // }, [overlay?.onClose, overlay]);
 
   useEffect(() => {
     function func(e: Event) {
@@ -120,7 +120,7 @@ export default function SearchBar() {
                 id="item"
                 className="hover:bg-slate-400 border-300 border-b-[1px] p-[2px]"
               >
-                all
+                All
               </li>
               <li
                 id="item"
@@ -172,65 +172,3 @@ export default function SearchBar() {
     </>
   );
 }
-
-// 'use client';
-// import Image from 'next/image';
-
-// import { FormEvent, useRef } from 'react';
-// import { useRouter } from 'next/navigation';
-
-// export default function SearchBar() {
-//   const inputRef = useRef<HTMLInputElement>(null);
-//   const selectRef = useRef<HTMLSelectElement>(null);
-
-//   const router = useRouter();
-//   function handle(formEvent: FormEvent) {
-//     formEvent.preventDefault();
-//     const query = inputRef.current!.value;
-//     const category = selectRef.current!.value;
-//     if (!query && !category) router.push('/');
-
-//     router.push(
-//       `/?${query ? 'query=' + query : ''}&${
-//         category.trim() !== 'all' ? `category=${category}` : ''
-//       }`
-//     );
-//   }
-
-//   return (
-//     <div className="bg-green-600 flex-grow">
-//       <form className="flex items-center gap-0 outline-none" onSubmit={handle}>
-//         <select
-//           ref={selectRef}
-//           defaultValue={'all'}
-//           name="category"
-//           id="category"
-//           className="rounded-l-lg rounded-sm bg-slate-200 hover:bg-slate-300 outline-none"
-//         >
-//           <option value="all">All</option>
-//           <option value="laptops">Laptop</option>
-//           <option value="mobiles">mobile</option>
-//           <option value="mobile accessories">mobile accessories</option>
-//         </select>
-
-//         <input
-//           ref={inputRef}
-//           name="query"
-//           type="text"
-//           className="p-1 flex-grow bg-slate-100 outline-none text-2xl"
-//         />
-//         <button
-//           type="submit"
-//           className="bg-orange-300 p-1 rounded-r hover:bg-orange-500"
-//         >
-//           <Image
-//             src="/images/icons/search.png"
-//             width={30}
-//             height={30}
-//             alt="search icon"
-//           />
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
