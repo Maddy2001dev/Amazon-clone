@@ -76,7 +76,7 @@ export default function Cart() {
               </p>
             </div>
 
-            <button className="bg-yellow-400 hover:bg-yellow-500 border-yellow-400 shadow shadow-slate-400 border-[1px] rounded-[5px] px-3 w-full mt-1 py-1.6">
+            <button className="bg-[#FFD814] hover:bg-yellow-500 border-yellow-400 shadow shadow-slate-400 border-[1px] rounded-[5px] px-3 w-full mt-1 py-1.6">
               Proceed to Checkout
             </button>
           </div>

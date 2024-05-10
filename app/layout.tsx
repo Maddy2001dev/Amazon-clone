@@ -14,7 +14,7 @@ import OverlayProvider from './contexts/OverlayContext';
 const inter = Nunito({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Amazon',
+  title: 'Amazon.com. Spend less. Smile more.',
   description:
     'bigest Browse & Discover Thousands of products. Read Customer Reviews and Find Best Sellers. We Have Different Products From Hundreds Of Renown Brands In Stock For You.',
 };

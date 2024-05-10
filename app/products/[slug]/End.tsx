@@ -1,4 +1,6 @@
+'use client';
 import { productShape } from '@/app/components/products/ProductItem';
+import { useCartContext } from '@/app/contexts/CartContext';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
@@ -29,6 +31,7 @@ export default function End({
       Quantity: {i + 1}
     </option>
   ));
+  const cartContext = useCartContext();
 
   const addBtn = useRef<HTMLButtonElement | null>(null);
   const [endExpanded, setEndExpaned] = useState(false);
@@ -46,7 +49,7 @@ export default function End({
       <div className="flex gap-[1px] mb-5">
         <p className="self-start pt-[6px]">$</p>
         <p className="self-stretch font-bold text-[30px] tracking-tight">
-          {data.price}
+          {cartContext?.total === 0 ? data.price : cartContext?.total}
         </p>
         <p className="font-semibold self-start pt-[6px]">99</p>
       </div>
@@ -95,7 +98,7 @@ export default function End({
             handleAdd();
           }
         }}
-        className="bg-yellow-400 hover:bg-yellow-500 border-yellow-400 shadow shadow-slate-400 border-[1px] rounded-full px-3 mt-3 py-1.6"
+        className="bg-[#FFD814] hover:bg-yellow-500 border-yellow-400 shadow shadow-slate-400 border-[1px] rounded-full px-3 mt-3 py-1.6"
       >
         {alreadyIn ? 'Remove from cart' : 'Add to cart'}
       </button>
