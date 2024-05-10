@@ -76,7 +76,7 @@ export default function SearchBar() {
 
   return (
     <>
-      <div ref={divContainer} className="flex-grow relative">
+      <div ref={divContainer} className="flex-grow  relative">
         <form
           className={`flex rounded items-center gap-0 ${
             inputSelected ? 'outline outline-orange-400 outline-[3px]' : ''
@@ -154,11 +154,11 @@ export default function SearchBar() {
             name="query"
             type="text"
             placeholder="Search Amazon"
-            className="p-1 border-t-slate-400 outline-none border-b-slate-400 border-[1px] text-[14px] flex-grow bg-slate-100 text-slate-900 text-2xl"
+            className="p-1.6 border-t-slate-400 outline-none border-b-slate-400 border-[1px] text-[14px] flex-grow bg-slate-100 text-slate-900 text-2xl"
           />
           <button
             type="submit"
-            className="bg-orange-300 border-[1px] border-orange-300 p-1 self-stretch rounded-r hover:bg-orange-300/80"
+            className="bg-orange-300 border-[1px] border-orange-300 p-1.6 self-stretch rounded-r hover:bg-orange-300/80"
           >
             <Image
               src="/images/icons/search.png"

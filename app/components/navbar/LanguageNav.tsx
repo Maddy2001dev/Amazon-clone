@@ -26,9 +26,9 @@ export default function LanguageNav() {
 
   const Modal = (
     <>
-      <div className="absolute r top-[60px] left-[1020px] z-[51]">
+      <div className="absolute r top-[55px] left-[1020px] z-[51]">
         <div className="relative">
-          <div className="triangle absolute top-[-10px] left-[48%]"></div>
+          <div className="triangle absolute top-[-10px] left-[166px]"></div>
           <div className="bg-white rounded flex flex-col justify-center gap-1 p-2">
             <div className="flex gap-[8px] items-center mb-4">
               <p className="text-[13px] text-[#444]">Change language</p>
