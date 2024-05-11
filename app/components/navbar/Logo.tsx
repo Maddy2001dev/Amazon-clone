@@ -4,8 +4,15 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 function Logo() {
   const router = useRouter();
+
   return (
-    <div onClick={() => router.push('/')} className=" cursor-pointer">
+    <div
+      onClick={() => {
+        router.push('/');
+        router.refresh();
+      }}
+      className=" cursor-pointer"
+    >
       <Image
         priority
         src="/images/brand/navbarImg.png"

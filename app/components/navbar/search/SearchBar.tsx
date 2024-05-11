@@ -52,19 +52,52 @@ export default function SearchBar() {
   }, []);
 
   const router = useRouter();
+
+  // function handle(formEvent: FormEvent) {
+  //   formEvent.preventDefault();
+  //   const query = inputRef.current!.value;
+
+  //   setInputSelected(false);
+  //   overlay?.onClose();
+  //   if (category == 'All' && query) {
+  //     router.push(`?query=${query}`);
+  //   }
+  //   if (category !== 'All' && query) {
+  //     router.push(`?query=${query}&category=${category}`);
+  //   }
+
+  //   if (!query && !category) router.refresh);
+
+  //   // router.push(
+  //   //   `/?${query ? 'query=' + query : ''}&${
+  //   //     category.trim() !== 'All' ? `category=${category}` : ''
+  //   //   }`
+  //   // );
+  // }
+
   function handle(formEvent: FormEvent) {
     formEvent.preventDefault();
     const query = inputRef.current!.value;
 
     setInputSelected(false);
     overlay?.onClose();
-    if (!query && !category) router.push('/');
+    if (!query && category === 'All') router.push('/');
 
-    router.push(
-      `/?${query ? 'query=' + query : ''}&${
-        category.trim() !== 'all' ? `category=${category}` : ''
-      }`
-    );
+    // router.push(
+    //   `/?${query ? 'query=' + query : ''}&${
+    //     category !== 'All' ? `category=${category}` : ''
+    //   }`
+    // );
+
+    if (category == 'All' && query) {
+      router.push(`?query=${query}`);
+    }
+    if (query && category !== 'All') {
+      router.push(`?query=${query}&category=${category}`);
+    }
+    if (!query && category !== 'All') {
+      router.push(`?category=${category}`);
+    }
   }
 
   useEffect(() => {
@@ -108,8 +141,9 @@ export default function SearchBar() {
             <ul
               onClick={(e) => {
                 const el = e.target as HTMLLIElement;
+
                 if (el.id === 'item') {
-                  setCategory(() => el.innerHTML);
+                  setCategory(() => el.innerText);
                 }
               }}
               className={`absolute overflow-y-scroll border-slate-400 w-[150px] border-[1px] flex flex-col gap-1.6 top-[45px] bg-white ${

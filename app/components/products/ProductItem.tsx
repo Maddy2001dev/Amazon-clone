@@ -53,7 +53,7 @@ export default function ProductItem({ data }: ProductItemProps) {
           ${data.price}
         </p>
 
-        <p className="p text-sm mt-2">{data.name}</p>
+        <p className="p text-sm mt-2">{data.description}</p>
         <div className="flex p-[2px] gap-1 self-start items-center">
           <div className="flex gap-1">
             <Image

@@ -24,7 +24,7 @@ export default function Mid({
 
   const [midExpanded, setMidExpaned] = useState(false);
   const [olExpanded, setOlExpaned] = useState(false);
-  const [rateOpen, setRateOpen] = useState(false);
+  const [rateOpen, setRateOpen] = useState(true);
   const [detailOpen, setDetailOpen] = useState(false);
   const [musicOpen, setMusicOpen] = useState(false);
 
@@ -49,9 +49,9 @@ export default function Mid({
             setRateOpen(() => true);
           }}
           onMouseLeave={() => setRateOpen(() => false)}
-          className="flex justify-center cursor-pointer  items-center gap-1.6"
+          className="flex relative justify-center cursor-pointer items-center gap-1.6"
         >
-          <div className="relative">
+          <div className="">
             {rateOpen && <Rate />}
             <div className="flex items-center gap-[4px]">
               <p className="text-sm">4.3</p>
@@ -87,13 +87,13 @@ export default function Mid({
               />
             </div>
           </div>
-          <Link
-            href="#"
-            className="text-[14px] ml-1 text-[#007185] hover:text-red-600 hover:underline"
-          >
-            1,752 ratings
-          </Link>
         </div>
+        <Link
+          href="#"
+          className="text-[14px] ml-1 text-[#007185] hover:text-red-600 hover:underline"
+        >
+          1,752 ratings
+        </Link>
         <span>|</span>
         <Link
           href="#"

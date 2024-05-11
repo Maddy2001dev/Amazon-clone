@@ -192,3 +192,17 @@ body,
     -webkit-transform: rotateZ(360deg);
   }
 }
+
+.fill-animation {
+  width: 0%;
+  animation: fill 1s forwards;
+}
+
+@keyframes fill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 65%;
+  }
+}
