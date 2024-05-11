@@ -12,8 +12,8 @@ export default function Music({ musicIsOpen, setter }: MusicProps) {
     <>
       <div
         className={`w-full absolute h-full z-[55] bg-white top-0 transition-all duration-300 ${
-          musicIsOpen ? 'translate-x-[0px]' : ''
-        } translate-x-[365px] `}
+          musicIsOpen ? 'translate-x-[0px]' : 'translate-x-[365px]'
+        }  `}
       >
         <button
           onClick={() => setter()}

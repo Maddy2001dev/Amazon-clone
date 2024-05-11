@@ -18,9 +18,7 @@ export default function SideMenuModal() {
       <ul>
         <li
           onClick={() => {
-            setTimeout(() => {
-              setMusicIsOpen(true);
-            }, 0);
+            setMusicIsOpen(true);
           }}
           className="cursor-pointer group flex justify-between items-center hover:bg-slate-200 py-2 px-5 text-sm"
         >
@@ -249,9 +247,9 @@ export default function SideMenuModal() {
         ></div>
       )}
       <div
-        className={`fixed inset-0 z-[53] transition duration-300 translate-x-[${
-          menuContext?.isOpen ? '0' : '-365px'
-        }] w-[365px] outline-none focus:outline-none bg-white`}
+        className={`fixed inset-0 z-[53] transition  duration-300 ${
+          menuContext?.isOpen ? 'translate-x-0' : 'translate-x-[-365px]'
+        } w-[365px] outline-none focus:outline-none bg-white`}
       >
         <div id="container">
           <header className="bg-[#232F3E] flex items-center pl-[30px] gap-[10px] p-[8px]">
@@ -262,7 +260,6 @@ export default function SideMenuModal() {
               alt="Profile icon"
             />
             <p className="text-white font-extrabold text-lg">Hello, sign in</p>
-            <p>{musicIsOpen ? 'true' : 'false'}</p>
           </header>
           <main className="overflow-scroll relative h-screen">
             {menuContext?.isOpen && (
