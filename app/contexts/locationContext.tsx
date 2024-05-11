@@ -1,9 +1,14 @@
 'use client';
-import React, { ReactNode, createContext, useState } from 'react';
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
 interface locationContextI {
   location: string | null;
-  setTheLocation: (location: string) => void;
 }
 
 const locationContext = createContext<locationContextI | null>(null);
@@ -12,16 +17,35 @@ interface locationProviderProps {
   children: ReactNode;
 }
 
-export function LocationContextProvider({ children }: locationProviderProps) {
-  const [location, setLocation] = useState<string | null>(null);
+export default function LocationContextProvider({
+  children,
+}: locationProviderProps) {
+  const [location, setLocation] = useState<string | 'Unknown'>('Unknown');
 
-  const setTheLocation = (location: string) => setLocation(location);
+  useEffect(() => {
+    (async function () {
+      try {
+        const res = await fetch(`https://get.geojs.io/v1/ip/geo.json`);
+
+        const data = await res.json();
+        setLocation(data.country);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
 
   const value = {
     location,
-    setTheLocation,
   };
 
-  return;
-  <locationContext.Provider value={value}>{children}</locationContext.Provider>;
+  return (
+    <locationContext.Provider value={value}>
+      {children}
+    </locationContext.Provider>
+  );
+}
+
+export function useLoaction() {
+  return useContext(locationContext);
 }

@@ -7,7 +7,7 @@ import Music from './Music';
 import { productShape } from '@/app/components/products/ProductItem';
 
 interface Midprops {
-  country: string;
+  country: string | null | undefined;
   selectedStyle?: string;
   setSelectedStyle: Dispatch<SetStateAction<string | undefined>>;
   data: productShape;

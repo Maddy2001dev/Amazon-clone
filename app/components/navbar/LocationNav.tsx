@@ -1,4 +1,5 @@
 'use client';
+import { useLoaction } from '@/app/contexts/locationContext';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -8,49 +9,7 @@ interface Coordinates {
 }
 
 export default function LocationNav() {
-  const [location, setLocation] = useState<Coordinates | null>(null);
-  const [country, setCountry] = useState<string | null>(null);
-
-  useEffect(() => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error);
-    } else {
-      console.log('Geolocation not supported');
-    }
-
-    function success(position: GeolocationPosition) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      setLocation({ latitude, longitude });
-      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-
-      fetchCountry(latitude, longitude);
-    }
-
-    function error() {
-      console.log('Unable to retrieve your location');
-    }
-  }, []);
-
-  async function fetchCountry(latitude: number, longitude: number) {
-    try {
-      const response = await fetch(
-        `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=YOUR_API_KEY`
-      );
-      const data = await response.json();
-      if (data.results && data.results.length > 0) {
-        const addressComponents = data.results[0].address_components;
-        const countryComponent = addressComponents.find((component: any) =>
-          component.types.includes('country')
-        );
-        if (countryComponent) {
-          setCountry(countryComponent.long_name);
-        }
-      }
-    } catch (error) {
-      console.log('Error fetching country:', error);
-    }
-  }
+  const context = useLoaction();
 
   return (
     <div className="mr-2 py-1 pr-1 cursor-pointer hover:border-[1px] hover:rounded-sm border-[1px] border-nav hover:border-white text-white flex items-center justify-center">
@@ -66,7 +25,7 @@ export default function LocationNav() {
           Deliver to
         </span>
         <span className="text-[14px] max-w-0-[60px] leading-[15px] font-[700] text-ellipsis">
-          Germany
+          {context?.location}
         </span>
       </div>
     </div>

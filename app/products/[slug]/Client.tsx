@@ -6,14 +6,16 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 import End from './End';
 import Mid from './Mid';
+import { useLoaction } from '@/app/contexts/locationContext';
 
 interface ClinetI {
   data: productShape;
 }
 
 export default function Client({ data }: ClinetI) {
+  const contextLocation = useLoaction();
+  const country = contextLocation?.location;
   const context = useCartContext();
-  const country = 'Germany';
 
   const alreadyIn = context?.products.find((product) =>
     data.id === product.id ? true : false

@@ -1,0 +1,52 @@
+{
+  "name": "@splidejs/react-splide",
+  "version": "0.7.12",
+  "description": "The React component for Splide.",
+  "author": "Naotoshi Fujita",
+  "license": "MIT",
+  "main": "dist/js/react-splide.cjs.js",
+  "module": "dist/js/react-splide.esm.js",
+  "types": "dist/types/index.d.ts",
+  "keywords": [
+    "splide",
+    "slider",
+    "carousel",
+    "slideshow",
+    "lightweight",
+    "touch",
+    "responsive",
+    "react"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Splidejs/react-splide.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Splidejs/react-splide/issues"
+  },
+  "scripts": {
+    "develop": "node ./scripts/develop.js",
+    "build:module": "node ./scripts/build-module.js",
+    "build:types": "node scripts/clean.js && tsc --emitDeclarationOnly",
+    "build:all": "npm run build:module && npm run build:types && npm run copy",
+    "check:type": "tsc --noEmit",
+    "copy": "node scripts/copy-css.js",
+    "test": "jest",
+    "eslint": "eslint src",
+    "deploy": "gh-pages -d examples/dist"
+  },
+  "exports": {
+    ".": {
+      "require": "./dist/js/react-splide.cjs.js",
+      "import": "./dist/js/react-splide.esm.js",
+      "default": "./dist/js/react-splide.esm.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./css": "./dist/css/splide.min.css",
+    "./css/core": "./dist/css/splide-core.min.css",
+    "./css/*": "./dist/css/themes/splide-*.min.css"
+  },
+  "dependencies": {
+    "@splidejs/splide": "^4.1.3"
+  }
+}

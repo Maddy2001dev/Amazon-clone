@@ -10,6 +10,7 @@ import { MenuProvider } from './contexts/MenuContext';
 import { CartContextProvider } from './contexts/CartContext';
 import Overlay from './components/overlay/Overlay';
 import OverlayProvider from './contexts/OverlayContext';
+import LocationContextProvider from './contexts/locationContext';
 
 const inter = Nunito({ subsets: ['latin'] });
 
@@ -28,17 +29,19 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Toaster />
-        <MenuProvider>
-          <CartContextProvider>
-            <OverlayProvider>
-              <Overlay />
-              <SideMenuModal />
-              <Navbar />
-              <div>{children}</div>
-              <Footer />
-            </OverlayProvider>
-          </CartContextProvider>
-        </MenuProvider>
+        <LocationContextProvider>
+          <MenuProvider>
+            <CartContextProvider>
+              <OverlayProvider>
+                <Overlay />
+                <SideMenuModal />
+                <Navbar />
+                <div>{children}</div>
+                <Footer />
+              </OverlayProvider>
+            </CartContextProvider>
+          </MenuProvider>
+        </LocationContextProvider>
       </body>
     </html>
   );

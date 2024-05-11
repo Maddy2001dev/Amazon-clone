@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Dispatch, SetStateAction, useRef, useState } from 'react';
 
 interface EndProps {
-  country: string;
+  country: string | null | undefined;
   quantity: number;
   setQuantity: Dispatch<SetStateAction<number>>;
   alreadyIn?: productShape | undefined;

@@ -1,18 +1,21 @@
 'use client';
 import Link from 'next/link';
 import ProductItem, { productShape } from './ProductItem';
+import { useLoaction } from '@/app/contexts/locationContext';
 
 interface ProductListingProps {
   products: productShape[];
 }
 
 export default function ProductListing({ products }: ProductListingProps) {
+  const context = useLoaction();
+
   return (
     <main className="p-4 min-h-fit -mt-[400px] relative">
       <header className="bg-[#f5f6f6] mb-4 text-center text-sm py-1 flex justify-center gap-1.6">
         <p>
-          You are on amazon.com. You can also shop on Amazon Germany for
-          millions of products with fast local delivery. Click here to go to
+          You are on amazon.com. You can also shop on Amazon {context?.location}{' '}
+          for millions of products with fast local delivery. Click here to go to
         </p>
         <Link href="#" className="text-[#007185] hover:text-red-600">
           amazon.de
