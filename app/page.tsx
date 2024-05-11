@@ -1,6 +1,6 @@
 import ProductListing from './components/products/ProductListing';
 import { getProducts } from '@/app/services';
-import Swipper from './components/Swipper';
+import Swipper from '@/app/components/Swipper';
 
 export default async function Home({
   searchParams,
