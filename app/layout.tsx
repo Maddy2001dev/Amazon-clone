@@ -28,17 +28,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Toaster />
-        <CartContextProvider>
-          <OverlayProvider>
-            <Overlay />
-            <MenuProvider>
-              <Navbar />
+        <MenuProvider>
+          <CartContextProvider>
+            <OverlayProvider>
+              <Overlay />
               <SideMenuModal />
-            </MenuProvider>
-            <div>{children}</div>
-            <Footer />
-          </OverlayProvider>
-        </CartContextProvider>
+              <Navbar />
+              <div>{children}</div>
+              <Footer />
+            </OverlayProvider>
+          </CartContextProvider>
+        </MenuProvider>
       </body>
     </html>
   );
