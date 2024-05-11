@@ -1,6 +1,5 @@
 'use client';
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import img from '/images/products/laptop1.png';
 
 import '@splidejs/react-splide/css/core';
 import Image from 'next/image';
