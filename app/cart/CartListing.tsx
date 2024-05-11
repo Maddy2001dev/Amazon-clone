@@ -1,6 +1,6 @@
 import { productShape } from '../components/products/ProductItem';
 import { useCartContext } from '../contexts/CartContext';
-import CartItem from './CartItem';
+import CartItem from './cartItem';
 
 interface CartListingProps {
   data?: productShape[];
