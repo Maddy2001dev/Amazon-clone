@@ -26,7 +26,6 @@ export const MenuProvider: React.FC<MenuProviderProps> = ({ children }) => {
   return <MenuContext.Provider value={value}>{children}</MenuContext.Provider>;
 };
 
-// custom hook
 export const useMenuContext = () => {
   const context = useContext(MenuContext);
 

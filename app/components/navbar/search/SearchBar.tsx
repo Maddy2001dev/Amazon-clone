@@ -25,18 +25,6 @@ export default function SearchBar() {
     return () => document.removeEventListener('click', func);
   }, []);
 
-  // useEffect(() => {
-  //   function func(e: Event) {
-  //     const container = divContainer.current;
-  //     const target = e.target as HTMLElement;
-  //     if (!container?.contains(target)) {
-  //       overlay?.onClose();
-  //     }
-  //   }
-  //   document.addEventListener('click', func);
-  //   return () => document.removeEventListener('click', func);
-  // }, [overlay?.onClose, overlay]);
-
   useEffect(() => {
     function func(e: Event) {
       const target = e.target as HTMLElement;
@@ -53,28 +41,6 @@ export default function SearchBar() {
 
   const router = useRouter();
 
-  // function handle(formEvent: FormEvent) {
-  //   formEvent.preventDefault();
-  //   const query = inputRef.current!.value;
-
-  //   setInputSelected(false);
-  //   overlay?.onClose();
-  //   if (category == 'All' && query) {
-  //     router.push(`?query=${query}`);
-  //   }
-  //   if (category !== 'All' && query) {
-  //     router.push(`?query=${query}&category=${category}`);
-  //   }
-
-  //   if (!query && !category) router.refresh);
-
-  //   // router.push(
-  //   //   `/?${query ? 'query=' + query : ''}&${
-  //   //     category.trim() !== 'All' ? `category=${category}` : ''
-  //   //   }`
-  //   // );
-  // }
-
   function handle(formEvent: FormEvent) {
     formEvent.preventDefault();
     const query = inputRef.current!.value;
@@ -82,12 +48,6 @@ export default function SearchBar() {
     setInputSelected(false);
     overlay?.onClose();
     if (!query && category === 'All') router.push('/');
-
-    // router.push(
-    //   `/?${query ? 'query=' + query : ''}&${
-    //     category !== 'All' ? `category=${category}` : ''
-    //   }`
-    // );
 
     if (category == 'All' && query) {
       router.push(`?query=${query}`);
@@ -181,7 +141,6 @@ export default function SearchBar() {
             onClick={() => {
               overlay?.onOpen();
               setInputSelected(true);
-              // setSelectIsOpen(false);
             }}
             autoComplete="off"
             ref={inputRef}
