@@ -60,12 +60,18 @@ export default function Cart() {
             <hr className="border-slate-300 mt-1 h-[3px]" />
             <CartListing data={context?.products} />
           </div>
-          <div className="bg-white rounded self-start p-[20px] shadow-sm shadow-slate-400">
-            <p className="text-lg">
-              Subtotal (<span className="font-semibold text-yellow-900">1</span>{' '}
-              item):{' '}
-              <span className="font-bold text-xl">${context?.total}</span>
-            </p>
+          <div className="bg-white rounded self-start p-[20px] shadow-sm w-[275px]  shadow-slate-40">
+            <div className="flex flex-col">
+              <p>
+                Subtotal (
+                <span className="font-semibold text-yellow-900">
+                  {context?.quantity}
+                </span>{' '}
+                item):{' '}
+              </p>
+              <p className="font-bold text-xl">${context?.total}</p>
+            </div>
+
             <div className="flex py-1 text-[14px] gap-1">
               <input type="checkbox" />
               <p>

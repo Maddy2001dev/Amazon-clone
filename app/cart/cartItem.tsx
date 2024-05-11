@@ -69,19 +69,15 @@ export default function CartItem({ product }: CartItemProps) {
                 id="quantity"
                 value={quantity}
                 onChange={(e) => {
-                  setIsChanging(true);
-                  setQuantity(() => +e.target.value);
-                  // if (!alreadyIn) {
-                  //   setQuantity(+e.target.value);
-                  // } else {
-                  //   addBtn.current!.innerText = 'Update';
-                  //   setQuantity(+e.target.value);
-                  // }
+                  if (quantity !== +e.target.value) {
+                    setIsChanging(true);
+                    setQuantity(() => +e.target.value);
+                  }
                 }}
               >
                 {selections}
               </select>
-              <span className="mx-2 text-slate-300">|</span>
+              <span className="mx-2 max-w-[52px] text-slate-300">|</span>
               <button
                 onClick={() => {
                   if (isChanging) {

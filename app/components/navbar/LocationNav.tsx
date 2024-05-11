@@ -54,7 +54,7 @@ export default function LocationNav() {
   }
 
   return (
-    <div className="mr-3 py-1 pr-1 cursor-pointer hover:border-[1px] hover:rounded-sm border-[1px] border-nav hover:border-white text-white flex items-center justify-center">
+    <div className="mr-2 py-1 pr-1 cursor-pointer hover:border-[1px] hover:rounded-sm border-[1px] border-nav hover:border-white text-white flex items-center justify-center">
       <Image
         src="/images/icons/locationIcon.png"
         width={27}

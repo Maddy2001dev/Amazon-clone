@@ -15,7 +15,10 @@ export default function CartListing({ data }: CartListingProps) {
       ))}
       <div className="w-full">
         <p className="text-right text-lg">
-          Subtotal (<span className="font-semibold text-yellow-900">1</span>{' '}
+          Subtotal (
+          <span className="font-semibold text-yellow-900">
+            {context?.quantity}
+          </span>{' '}
           item): <span className="font-bold text-xl">${context?.total}</span>
         </p>
       </div>

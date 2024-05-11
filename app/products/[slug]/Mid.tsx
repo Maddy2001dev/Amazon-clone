@@ -24,7 +24,7 @@ export default function Mid({
 
   const [midExpanded, setMidExpaned] = useState(false);
   const [olExpanded, setOlExpaned] = useState(false);
-  const [rateOpen, setRateOpen] = useState(true);
+  const [rateOpen, setRateOpen] = useState(false);
   const [detailOpen, setDetailOpen] = useState(false);
   const [musicOpen, setMusicOpen] = useState(false);
 
