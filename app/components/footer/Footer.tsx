@@ -9,7 +9,7 @@ export default function Footer() {
           Back to top
         </p>
       </Link>
-      <div className="p-10 px-[180px] flex justify-around flex-row  bg-[#232F3E]">
+      <div className="p-10 shrink-0 px-[90px] sm:[110px] md:px-[130px] lg:px-[160px] xl:px-[180px]  grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-around flex-row bg-[#232F3E]">
         <div>
           <p className="text-white font-extrabold p-[2px]">Get to Know Us</p>
           <ul className="flex flex-col">
@@ -169,8 +169,11 @@ export default function Footer() {
       </div>
       <hr className="border-slate-500 h-[0.5px]" />
       <div className="bg-[#232F3E] p-[10px]">
-        <div className="flex items-center justify-center mx-auto w-[800px]">
-          <Link href="/" className="p-1 mr-20">
+        <div className="flex items-center justify-center mx-auto max-w-[800px]">
+          <Link
+            href="/"
+            className="p-1 mr-[8px] -ml-[24px] sm:mr-[12px] md:mr-[14px] lg:mr-[16px] xl:mr-[20px]"
+          >
             <Image
               src="/images/brand/navbarImg.png"
               width={100}
@@ -179,7 +182,7 @@ export default function Footer() {
             />
           </Link>
           <div className="flex items-center justify-center gap-1">
-            <div className="p-1.6 cursor-pointer flex items-center gap-1 border-slate-500 border-2 rounded justify-center">
+            <div className="p-1.6 shrink-0 cursor-pointer flex items-center gap-1 border-slate-500 border-2 rounded justify-center">
               <Image
                 src="/images/icons/globe.png"
                 width={17}
@@ -188,13 +191,13 @@ export default function Footer() {
               />
               <p>English</p>
             </div>
-            <div className="p-1.6 cursor-pointer flex items-center gap-1 border-slate-500 border-2 rounded justify-center">
+            <div className="p-1.6 shrink-0 cursor-pointer flex items-center gap-1 border-slate-500 border-2 rounded justify-center">
               <p>
                 <span className="font-semibold text-white">$</span> USD - U.s
                 Dollor
               </p>
             </div>
-            <div className="p-1.6 cursor-pointer flex items-center gap-1 border-slate-500 border-2 rounded justify-center">
+            <div className="p-1.6 shrink-0 cursor-pointer flex items-center gap-1 border-slate-500 border-2 rounded justify-center">
               <Image
                 src="/images/icons/united-states.png"
                 width={17}
