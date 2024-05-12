@@ -139,7 +139,7 @@ export default function SignIn() {
     <div
       onMouseEnter={() => setShowModal(() => true)}
       onMouseLeave={() => setShowModal(() => false)}
-      className="mr-1.4 p-1.6 cursor-pointer hover:border-[1px] hover:rounded-sm border-[1px] border-nav hover:border-white"
+      className="text-nowrap hidden sm:hidden md:block lg:block mr-1.4 p-1.6 cursor-pointer hover:border-[1px] hover:rounded-sm border-[1px] border-nav hover:border-white"
     >
       <div className="text-white">
         <p className="text-[12px]">Hello, sign in</p>

@@ -11,7 +11,7 @@ function Logo() {
         router.push('/');
         router.refresh();
       }}
-      className=" cursor-pointer"
+      className="cursor-pointer"
     >
       <Image
         priority
