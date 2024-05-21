@@ -19,9 +19,9 @@ export default function SignIn() {
 
   const Modal = (
     <>
-      <div className="absolute top-[56px] left-[64.2%] z-[51]">
+      <div className="absolute top-[56px] left-[60vw] z-[51]">
         <div className="relative">
-          <div className="triangle absolute top-[-10px] left-[71%]"></div>
+          <div className="triangle absolute top-[-10px] left-[26.6vw]"></div>
           <div className="bg-white rounded flex flex-col justify-center gap-1 p-2 w-[500px]">
             <button className="bg-[#FFD814] hover:bg-yellow-500 border-yellow-400 shadow self-center w-[70%] shadow-slate-400 border-[1px] rounded-full px-3 py-1.6">
               Sign in
