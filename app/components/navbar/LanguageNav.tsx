@@ -26,7 +26,7 @@ export default function LanguageNav() {
 
   const Modal = (
     <>
-      <div className="absolute top-[55px] left-[1020px] z-[51]">
+      <div className="absolute top-[50px] left-[67.1%] z-[51]">
         <div className="relative">
           <div className="triangle absolute top-[-10px] left-[166px]"></div>
           <div className="bg-white rounded flex flex-col justify-center gap-1 p-2">

@@ -19,7 +19,7 @@ export default function SignIn() {
 
   const Modal = (
     <>
-      <div className="absolute top-[56px] left-[975px] z-[51]">
+      <div className="absolute top-[56px] left-[64.2%] z-[51]">
         <div className="relative">
           <div className="triangle absolute top-[-10px] left-[355px]"></div>
           <div className="bg-white rounded flex flex-col justify-center gap-1 p-2 w-[500px]">
