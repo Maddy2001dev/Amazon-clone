@@ -41,24 +41,47 @@ export default function SearchBar() {
 
   const router = useRouter();
 
-  function handle(formEvent: FormEvent) {
+  // function handle(formEvent: FormEvent) {
+  //   formEvent.preventDefault();
+  //   const query = inputRef.current!.value;
+
+  //   setInputSelected(false);
+  //   overlay?.onClose();
+  //   router.push('/');
+  //   // if (!query && category === 'All') router.push('/');
+
+  //   if (category == 'All' && query) {
+  //     router.push(`?query=${query}`);
+  //     console.log('1');
+  //   }
+  //   if (query && category !== 'All') {
+  //     router.push(`?query=${query}&category=${category}`);
+  //     console.log('2');
+  //   }
+  //   if (!query && category !== 'All') {
+  //     router.push(`?category=${category}`);
+  //     console.log('3');
+  //   }
+  // }
+
+  const handle = (formEvent: FormEvent) => {
     formEvent.preventDefault();
     const query = inputRef.current!.value;
 
     setInputSelected(false);
     overlay?.onClose();
-    if (!query && category === 'All') router.push('/');
+    router.push('/');
 
-    if (category == 'All' && query) {
-      router.push(`?query=${query}`);
+    if (category === 'All' && query) {
+      router.push(`/?query=${query}`);
+    } else if (query && category !== 'All') {
+      router.push(`/?query=${query}&category=${category}`);
+    } else if (!query && category !== 'All') {
+      router.push(`/?category=${category}`);
+    } else {
+      router.push('/');
     }
-    if (query && category !== 'All') {
-      router.push(`?query=${query}&category=${category}`);
-    }
-    if (!query && category !== 'All') {
-      router.push(`?category=${category}`);
-    }
-  }
+  };
 
   useEffect(() => {
     if (category != 'All') {

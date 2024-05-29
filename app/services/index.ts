@@ -6,9 +6,10 @@ interface getProductsI {
 export async function getProducts(props: getProductsI) {
   const query = props.query;
   const category = props.category ? props.category : 'All';
-  console.log(category);
+
   const string = () => {
     if (props?.id !== undefined) return `/${props.id}`;
+
     if (query && category === 'All') {
       return `?name_like=${query}`;
     }
